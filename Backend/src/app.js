@@ -10,6 +10,7 @@ app.use(express.json())
 app.use(cookieParser()); // Parse cookies
 app.use(cors({
     origin:"http://localhost:5173",
+    "https://interviewreport-resume-frontend.onrender.com",
     credentials: true
 }))
 
