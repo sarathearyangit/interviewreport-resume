@@ -122,27 +122,61 @@ async function getAllInterviewReportsController(req, res){
 }
 
 /* Controller to generate resume PDF based on user self description, resume and job description.  */
+
 async function generateResumePdfController(req, res) {
-    const { interviewReportId } = req.params
+    try {
+        const { interviewReportId } = req.params;
 
-    const interviewReport = await interviewReportModel.findById(interviewReportId)
+        console.log("Resume PDF generation started");
+        console.log("Interview Report ID:", interviewReportId);
 
-    if (!interviewReport) {
-        return res.status(404).json({
-            message: "Interview report not found."
-        })
+        const interviewReport =
+            await interviewReportModel.findById(interviewReportId);
+
+        if (!interviewReport) {
+            console.error("Interview report not found:", interviewReportId);
+
+            return res.status(404).json({
+                message: "Interview report not found."
+            });
+        }
+
+        const { resume, jobDescription, selfDescription } = interviewReport;
+
+        console.log("Interview report found");
+        console.log("Resume exists:", !!resume);
+        console.log("Job description exists:", !!jobDescription);
+        console.log("Self description exists:", !!selfDescription);
+        console.log("Starting PDF generation...");
+
+        const pdfBuffer = await generateResumePdf({
+            resume,
+            jobDescription,
+            selfDescription
+        });
+
+        console.log("PDF generated successfully");
+        console.log("PDF buffer size:", pdfBuffer?.length);
+
+        res.set({
+            "Content-Type": "application/pdf",
+            "Content-Disposition":
+                `attachment; filename=resume_${interviewReportId}.pdf`
+        });
+
+        return res.send(pdfBuffer);
+
+    } catch (error) {
+        console.error("❌ Resume PDF generation failed!");
+        console.error("Error name:", error.name);
+        console.error("Error message:", error.message);
+        console.error("Full stack trace:", error.stack);
+
+        return res.status(500).json({
+            message: "Resume PDF generation failed",
+            error: error.message
+        });
     }
-
-    const { resume, jobDescription, selfDescription } = interviewReport
-
-    const pdfBuffer = await generateResumePdf({ resume, jobDescription, selfDescription })
-
-    res.set({
-        "Content-Type": "application/pdf",
-        "Content-Disposition": `attachment; filename=resume_${interviewReportId}.pdf`
-    })
-
-    res.send(pdfBuffer)
 }
 
 
