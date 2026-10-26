@@ -1,0 +1,209 @@
+.interview-page {
+    --page: #0c0f14;
+    --panel: #151a21;
+    --panel-soft: #191f29;
+    --field: #202637;
+    --border: #282f3a;
+    --muted: #929baa;
+    --pink: #f01662;
+
+    display: grid;
+    grid-template-columns: minmax(170px, .72fr) minmax(0, 2.5fr) minmax(210px, .95fr);
+    min-height: 100vh;
+    background: var(--page);
+    color: #eef0f4;
+
+    * { box-sizing: border-box; }
+
+    .report-sidebar,
+    .skills-sidebar {
+        position: sticky;
+        top: 0;
+        align-self: start;
+        height: 100vh;
+        padding: 1.7rem 1.1rem;
+        background: #10141a;
+            display: flex;
+    flex-direction: column;
+
+    }
+
+    .report-sidebar { border-right: 1px solid var(--border); }
+    .skills-sidebar { border-left: 1px solid var(--border); }
+
+    .report-brand {
+        display: flex;
+        align-items: center;
+        gap: .6rem;
+        margin-bottom: 3.1rem;
+        color: #f4f5f7;
+        font-size: .95rem;
+        font-weight: 750;
+        letter-spacing: -.03em;
+        text-decoration: none;
+    }
+
+    .brand-mark {
+        display: grid;
+        width: 1.8rem;
+        height: 1.8rem;
+        place-items: center;
+        border-radius: .55rem;
+        background: linear-gradient(145deg, #f72e72, #b90d49);
+        color: white;
+        font-size: .8rem;
+    }
+
+    .brand-accent { color: var(--pink); }
+    .sidebar-label, .report-eyebrow, .section-kicker { color: #818b9b; font-size: .59rem; font-weight: 750; letter-spacing: .13em; }
+
+    .report-nav { 
+        display: flex;
+        flex: 1;
+        gap: .45rem; 
+        margin-top: .75rem;
+        flex-direction: column;
+    }
+
+    .report-nav a {
+        display: flex;
+        min-height: 2.65rem;
+        align-items: center;
+        gap: .55rem;
+        border: 1px solid transparent;
+        border-radius: .48rem;
+        padding: .45rem .5rem;
+        color: #aeb5c0;
+        font-size: .7rem;
+        text-decoration: none;
+        transition: color .16s, border-color .16s, background .16s;
+
+        &:hover, &:focus-visible { border-color: #3b2732; background: #211923; color: #fff; }
+    }
+
+    .report-nav .resume-button {
+    margin-top: auto;
+    width: 100%;
+    flex-shrink: 0;
+}
+    .nav-mark {
+        display: grid;
+        width: 1.35rem;
+        height: 1.35rem;
+        flex: 0 0 1.35rem;
+        place-items: center;
+        border-radius: .35rem;
+        background: #252b36;
+        color: #e7a0b8;
+        font-size: .59rem;
+        font-weight: 700;
+    }
+
+    .nav-count { margin-left: auto; color: #768091; font-size: .62rem; }
+    .report-main { min-width: 0; max-width: 920px; width: 100%; margin-inline: auto; padding: 2.5rem clamp(1.25rem, 3vw, 2.7rem) 2rem; }
+
+    .report-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1.45rem; }
+    .report-header h1 { margin: .45rem 0 .35rem; color: #f4f5f7; font-size: clamp(1.4rem, 2.2vw, 1.9rem); font-weight: 740; letter-spacing: -.04em; }
+    .report-header p, .skills-heading p { margin: 0; color: var(--muted); font-size: .75rem; line-height: 1.55; }
+    .ready-badge { display: inline-flex; flex: 0 0 auto; align-items: center; gap: .4rem; margin-top: .25rem; border: 1px solid #234333; border-radius: 99px; padding: .38rem .6rem; background: #14251d; color: #9ee0b8; font-size: .6rem; font-weight: 650; }
+    .ready-badge span { width: .38rem; height: .38rem; border-radius: 50%; background: #58d58b; box-shadow: 0 0 9px #58d58b80; }
+
+    .score-card { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; border: 1px solid var(--border); border-radius: .75rem; padding: 1rem 1.15rem; background: linear-gradient(115deg, #181e28, #151a21); }
+    .score-ring { display: grid; width: 3.65rem; height: 3.65rem; flex: 0 0 3.65rem; place-items: center; border-radius: 50%; background: conic-gradient(var(--score-color, var(--pink)) var(--score), #303642 var(--score)); }
+    .score-ring > div { display: flex; width: 2.95rem; height: 2.95rem; align-items: center; justify-content: center; border-radius: 50%; background: #171c24; }
+    .score-ring strong { color: #fff; font-size: 1.05rem; }
+    .score-ring div span { align-self: center; margin-top: .15rem; color: #abb2bf; font-size: .58rem; }
+    .score-copy { min-width: 0; }
+    .score-copy .report-eyebrow { font-size: .53rem; }
+    .score-copy h2 { margin: .2rem 0; font-size: .85rem; }
+    .score-copy p { margin: 0; color: var(--muted); font-size: .65rem; line-height: 1.45; }
+    .score-summary { display: grid; gap: .15rem; margin-left: auto; border-left: 1px solid var(--border); padding-left: 1rem; text-align: right; }
+    .score-summary strong { color: #f4f5f7; font-size: 1rem; }
+    .score-summary span { color: #8d96a3; font-size: .58rem; white-space: nowrap; }
+
+    .score-green { --score-color: #35c779; --score-accent: #70e0a5; }
+    .score-yellow { --score-color: #efbd42; --score-accent: #f6d16d; }
+    .score-red { --score-color: #ed5364; --score-accent: #ff8290; }
+    .score-card .score-ring strong { color: var(--score-accent, #fff); }
+    .skills-sidebar .score-card { flex-direction: column; align-items: flex-start; gap: .75rem; margin: 0 0 1.4rem; padding: .85rem; }
+    .skills-sidebar .score-copy h2 { color: var(--score-accent, #f4f5f7); }
+    .skills-sidebar .score-summary { width: 100%; grid-template-columns: auto 1fr; align-items: center; justify-content: start; margin: 0; border-top: 1px solid var(--border); border-left: 0; padding: .65rem 0 0; text-align: left; }
+
+    .report-section { scroll-margin-top: 1rem; margin-bottom: 2.2rem; }
+    .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: .75rem; margin-bottom: .8rem; }
+    .section-kicker { color: var(--pink); font-size: .53rem; }
+    .section-heading h2 { margin: .2rem 0 0; color: #f0f2f5; font-size: 1rem; font-weight: 700; letter-spacing: -.02em; }
+    .section-count { color: #858e9c; font-size: .62rem; white-space: nowrap; }
+    .question-list { display: grid; gap: .7rem; }
+
+    .question-card { display: grid; grid-template-columns: 2.15rem minmax(0, 1fr); gap: .8rem; border: 1px solid var(--border); border-radius: .65rem; padding: .9rem; background: var(--panel); }
+    .question-number { display: grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid #52233a; border-radius: .45rem; background: #2a1922; color: #ff6b99; font-size: .62rem; font-weight: 750; }
+    .question-copy { min-width: 0; }
+    .question-copy h3 { margin: .12rem 0 .75rem; color: #e8ebef; font-size: .79rem; font-weight: 650; line-height: 1.55; }
+    .question-detail { border-radius: .4rem; padding: .55rem .65rem; }
+    .question-detail + .question-detail { margin-top: .45rem; }
+    .intention-detail { border: 1px solid #2b3340; background: #191f29; }
+    .answer-detail { border: 1px solid #253c66; background: #17243a; }
+    .detail-label { display: block; margin-bottom: .22rem; color: #a0a9b8; font-size: .58rem; font-weight: 700; }
+    .answer-detail .detail-label { color: #8fb8f1; }
+    .question-detail p { margin: 0; color: #bdc4cf; font-size: .66rem; line-height: 1.55; }
+
+    .roadmap-list { display: grid; gap: .65rem; }
+    .roadmap-card { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: .8rem; border: 1px solid var(--border); border-radius: .65rem; padding: .85rem; background: var(--panel); }
+    .roadmap-day { display: flex; flex-direction: column; align-items: center; justify-content: center; align-self: start; gap: .1rem; border: 1px solid #502239; border-radius: .45rem; padding: .45rem .3rem; background: #2a1922; color: #ff78a1; }
+    .roadmap-day span { font-size: .49rem; font-weight: 750; letter-spacing: .1em; }
+    .roadmap-day strong { font-size: 1.15rem; line-height: 1; }
+    .roadmap-content h3 { margin: .1rem 0 .45rem; color: #e8ebef; font-size: .76rem; }
+    .roadmap-content ul { display: grid; gap: .32rem; margin: 0; padding: 0; list-style: none; }
+    .roadmap-content li { position: relative; padding-left: .85rem; color: #aab2bf; font-size: .64rem; line-height: 1.45; }
+    .roadmap-content li::before { position: absolute; top: .42em; left: .08rem; width: .3rem; height: .3rem; border-radius: 50%; background: var(--pink); content: ''; }
+    .report-footer { border-top: 1px solid var(--border); padding-top: .85rem; color: #737d8c; font-size: .6rem; text-align: center; }
+    .report-footer span { padding-inline: .25rem; color: var(--pink); }
+
+    .skills-sidebar { padding-inline: 1rem; }
+    .skills-heading { margin-top: .15rem; }
+    .skills-heading .report-eyebrow { color: var(--pink); font-size: .53rem; }
+    .skills-heading h2 { margin: .4rem 0 .35rem; font-size: 1.05rem; letter-spacing: -.025em; }
+    .skills-heading p { font-size: .67rem; }
+    .skill-list { display: grid; gap: .55rem; margin-top: 1.2rem; }
+    .skill-card { display: flex; align-items: flex-start; gap: .55rem; border: 1px solid var(--border); border-radius: .55rem; padding: .65rem; background: var(--panel); }
+    .severity-dot { width: .42rem; height: .42rem; flex: 0 0 .42rem; margin-top: .22rem; border-radius: 50%; }
+    .severity-medium { background: #f6b84d; box-shadow: 0 0 8px #f6b84d55; }
+    .severity-high { background: #f05b69; box-shadow: 0 0 8px #f05b6955; }
+    .severity-low { background: #58d58b; box-shadow: 0 0 8px #58d58b55; }
+    .skill-card h3 { margin: 0; color: #dce0e6; font-size: .66rem; font-weight: 600; line-height: 1.45; }
+    .severity-label { display: inline-block; margin-top: .35rem; border-radius: 99px; padding: .18rem .38rem; background: #30291c; color: #f6c66f; font-size: .52rem; text-transform: capitalize; }
+    .severity-text-high { background: #351e24; color: #ff8d98; }
+    .severity-text-low { background: #193126; color: #8fdaad; }
+    .skills-note { margin-top: 1.2rem; border: 1px solid #253c66; border-radius: .55rem; padding: .7rem; background: #15223a; }
+    .skills-note span { color: #79aff0; font-size: .52rem; font-weight: 750; letter-spacing: .12em; }
+    .skills-note p { margin: .3rem 0 0; color: #b2c4df; font-size: .63rem; line-height: 1.5; }
+
+    @media (max-width: 1050px) {
+        grid-template-columns: 160px minmax(0, 1fr);
+        .skills-sidebar { position: static; grid-column: 2; height: auto; border-top: 1px solid var(--border); border-left: 0; padding: 1.25rem clamp(1.25rem, 3vw, 2.7rem); }
+        .skill-list { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+        .skills-note { max-width: 400px; }
+    }
+
+    @media (max-width: 680px) {
+        display: block;
+        .report-sidebar { position: static; width: 100%; height: auto; padding: .8rem 1rem; border-right: 0; border-bottom: 1px solid var(--border); }
+        .report-brand { margin: 0 0 .75rem; }
+        .sidebar-label { display: none; }
+        .report-nav { display: flex; gap: .35rem; margin: 0; overflow-x: auto; }
+        .report-nav a { min-height: 2.2rem; flex: 0 0 auto; gap: .35rem; padding: .35rem .5rem; font-size: .62rem; }
+        .nav-mark { width: 1.15rem; height: 1.15rem; flex-basis: 1.15rem; }
+        .report-main { padding: 1.5rem 1rem; }
+        .report-header { flex-direction: column; gap: .7rem; }
+        .score-card { flex-wrap: wrap; gap: .75rem; padding: .8rem; }
+        .score-ring { width: 3.1rem; height: 3.1rem; flex-basis: 3.1rem; }
+        .score-ring > div { width: 2.5rem; height: 2.5rem; }
+        .score-ring strong { font-size: .9rem; }
+        .score-copy { flex: 1; }
+        .report-main .score-summary { width: 100%; grid-template-columns: auto 1fr; align-items: center; justify-content: start; margin: 0; border-top: 1px solid var(--border); border-left: 0; padding: .6rem 0 0; text-align: left; }
+        .question-card { grid-template-columns: 1.7rem minmax(0, 1fr); gap: .55rem; padding: .7rem; }
+        .question-number { width: 1.65rem; height: 1.65rem; }
+        .skills-sidebar { padding: 1.25rem 1rem; }
+    }
+}
